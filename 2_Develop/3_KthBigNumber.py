@@ -19,3 +19,28 @@ If the number produced from the large number is
 the Kth largest value is 22.
 '''
 
+import sys
+sys.stdin = open("input.txt", "rt")
+
+    
+N, K = map(int, input().split())
+l = list(map(int, input().split()))
+
+
+#중복을 제거하는 자료구조 : set
+res = set() 
+
+# 세개의 숫자 선택
+for i in range(N):
+    for j in range(i+1, N):
+        for m in range(j+1, N):
+            res.add(l[i]+l[j]+l[m])
+            
+res = list(res)
+res.sort(reverse=True)
+print(res[K-1])
+
+
+            
+            
+    
