@@ -20,7 +20,7 @@ the Kth largest value is 22.
 '''
 
 import sys
-sys.stdin = open("input.txt", "rt")
+#sys.stdin = open("input.txt", "rt")
 
     
 N, K = map(int, input().split())
