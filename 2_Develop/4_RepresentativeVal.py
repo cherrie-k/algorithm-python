@@ -18,7 +18,6 @@ the number(index+1) of students with the lowest student number(index+1) is the a
 
 import sys
 #sys.stdin = open("input.txt", "rt")
-
     
 N = int(input())
 l = list(map(int, input().split()))
@@ -29,15 +28,11 @@ for i in range(N):
 
 score = round(score/N)
 
-val = score - l[0]
-
-idx = 0
+min = l[0]
 
 for j in range(N):
-    if abs(score - l[j]) < abs(val):
-        if score - l[j] < val:
-            val = score-l[j]
-            idx = j
-            
+    if abs(score - l[j]) < abs(score - min):
+        min = l[j]
 
-print(score, idx+1)
+print(score, l.index(min)+1)
+
