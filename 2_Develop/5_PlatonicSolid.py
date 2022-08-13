@@ -31,3 +31,25 @@ for x in res:
 for y in res:
     if lst.count(y) == max:
         print(y, end = " ")
+
+
+'''
+다른 풀이
+
+import sys
+sys.stdin = open("input.txt", "r")
+n, m = map(int, input().split())
+cnt = [0] * (n + m + 3) # cnt는 0으로 초기화된 n+m+3크기의 리스트가 됨. 3은 그냥 좀 넉넉하게 잡아주려고 더함
+
+for i in range(1, n+1):
+    for j in range(1, m+1):
+        cnt[i+j] += 1   # 각 합한숫자가 몇번 나왔는지 기록해줌
+max = -1
+for i in range(n + m + 1):
+    if cnt[i] > max:
+        max = cnt[i]
+
+for i in range(n + m + 1):
+    if cnt[i] == max:
+        print(i, end=' ')
+        '''

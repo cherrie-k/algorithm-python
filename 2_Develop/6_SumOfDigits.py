@@ -33,3 +33,45 @@ for i in range(N):
     
 print(lst[idx])
     
+    
+'''
+다른 풀이 1 - int로만 처리
+import sys
+sys.stdin = open("input.txt", "rt")
+n = int(input())
+a = list(map(int, input().split()))
+def digit_sum(x):
+    sum = 0
+    while x > 0:
+        sum += x % 10
+        x = x // 10
+    return sum
+max = -2147000000 
+for x in a:
+    total = digit_sum(x)
+    if total > max:
+        max = total
+        res = x
+print(res)
+'''
+
+'''
+다른 풀이 2 - int를 string으로 바꿔서 처리
+import sys
+sys.stdin = open("input.txt", "rt")
+n = int(input())
+a = list(map(int, input().split()))
+def digit_sum(x):
+    sum = 0
+    for i in str(x):    #정수를 string처리 해줌
+        sum += int(i)   # 다시 정수로 바꿔줌
+    return sum
+max = -2147000000 
+for x in a:
+    total = digit_sum(x)
+    if total > max:
+        max = total
+        res = x
+print(res)
+'''
+    

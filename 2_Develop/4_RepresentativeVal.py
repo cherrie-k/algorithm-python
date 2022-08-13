@@ -36,3 +36,24 @@ for j in range(N):
 
 print(score, l.index(min)+1)
 
+'''
+다른 풀이
+import sjys
+sys.stdin = open("input.txt", "r")
+n = int(input())
+a = list(mp(int, input().split()))
+ave = round(sum(a)/n)
+min = 2147000000
+for idx, x in enumerate(a):
+    # idx에는 list a 에 있는 인덱스 값을, x에는 해당 인덱스에 있는 원소값을 대입해줌
+    tmp = abs(x-ave)
+    if tmp < min:
+        min = tmp
+        score = x 
+        res = idx + 1
+    elif tmp == min:    # 평균값과의 거리가 같을 때
+        if x > score:
+            score = x
+            res = idx + 1 
+print(ave, res)
+'''
