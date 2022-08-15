@@ -17,15 +17,26 @@ and def isPrime(x), as a function of determining if it is a prime number.
 '''
 
 import sys
-sys.stdin = open("input.txt", "rt")
+#sys.stdin = open("input.txt", "rt")
 
 N = int(input())
-lst = list(map(int, input().split()))
+lst = list(map(str, input().split()))
+
 
 def reverse(x):
-    return x
+    x = str(x)
+    return (x[::-1])
 
 def isPrime(x):
+    x = int(x)
+    if x == 1:
+        return False
+    for i in range(2, x):
+        if x % i == 0:
+            return False
     return True
 
-print(lst)
+
+for i in lst:
+    if isPrime(reverse(i)) is True:
+        print(int(reverse(i)), end=' ')
