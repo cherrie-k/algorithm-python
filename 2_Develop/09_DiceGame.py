@@ -62,3 +62,29 @@ for n in range(N):
 lst.sort()
 print(lst[N-1])    
 
+
+
+
+'''
+다른 풀이
+import sys
+sys.stdin = open("input.txt", "rt")
+n = int(input())
+res = 0
+for i in range(n):
+    tmp = input().split()   # 리스트에 문자로 들어옴
+    tmp.sort()              # 오름차순 정렬
+    a, b, c = map(int, tmp) # 정렬된 숫자를 mapping해줌. c가 최댓값.
+    if a==b and b==c:
+        money = 1000 + a * 1000
+    elif a==b or a==c:
+        money = 1000 + a * 100
+    elif b == c:
+        money = 1000 + b * 100
+    else:
+        money=c * 100
+    if money > res:
+        res = money
+print(res)
+
+'''
