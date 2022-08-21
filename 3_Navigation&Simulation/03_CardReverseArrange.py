@@ -31,6 +31,7 @@ You will be given 10 sections for 20 cards(which are in ascending order),
 so write a program to find the placement of the final cards after successively 
 processing the reverse sequence according to the rules above.
 '''
+
 import sys
 #sys.stdin = open("input.txt", "rt")
 
