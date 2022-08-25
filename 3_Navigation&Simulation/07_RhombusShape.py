@@ -11,7 +11,7 @@
 Cherrie's farm is a form of N*N grid, 
 and an apple tree is planted in each grid. The size of N is always odd. 
 In autumn when Cherrie harvests apples, she only picks the apples in the
-diamond-shaped are of the grid. She leaves the rest of the area for birds.
+rhombus-shaped area of the grid. She leaves the rest of the area for birds.
 If N is 5, harvest the thick apple as shown in the figure below.
 (skipped figure)
 Print out the total number of harvested apples.
