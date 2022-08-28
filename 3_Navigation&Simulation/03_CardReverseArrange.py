@@ -51,3 +51,19 @@ for t in range(10):
 
 for n in lst:
     print(n, end=' ')
+    
+'''
+다른 풀이
+
+import sys
+sys.stdin = open("input.txt", "rt")
+a = list(range(21))
+for _ in range(10):
+    s, e = map(int, input().split())
+    # 절반 나눠서 서로 swap 해주기
+    for i in range((e-s+1)//2):
+        a[s+i], a[e-i] = a[e-i], a[s+i]        
+a.pop(0)    # 제일 앞에 있는 0 빼줌
+for x in a:
+    print(x, end=' ')
+'''
