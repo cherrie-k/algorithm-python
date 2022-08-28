@@ -36,3 +36,41 @@ for n in range(N):
 list1 = list2를 하고 list2.reverse()를 해버리면, 
 list1도 reverse 돼버려서 회문 판단 불가해짐.  
 '''
+
+
+'''
+다른 풀이
+
+import sys
+#sys.stdin=open("input.txt", "r")
+n=int(input())
+for i in range(1, n+1):
+    str=input()
+    str=str.upper()
+    #반반씩 나눠서 같은지 비교
+    for j in range(len(str)//2):
+        #앞에 반이랑 뒤에 반 같은지 비교
+        #뒤에부터 인덱스 넣는거는 -값으로 접근
+        if str[j]!=str[-1-j]:
+            print("#%d NO" %i)
+            break
+    else:
+        print("#%d YES" %i)
+
+
+
+
+<다른코드>
+
+import sys
+sys.stdin=open("input.txt", "r")
+n=int(input())
+for i in range(n):
+    str=input()
+    str=str.upper()
+    if str==str[::-1]:
+        # ::-1로 string reverse 시켜줌
+        print("#%d YES" %i)
+    else:
+        print("#%d NO" %i)
+'''

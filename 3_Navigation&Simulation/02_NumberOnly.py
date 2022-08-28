@@ -20,6 +20,7 @@ The integer produced by extraction does not exceed 100,000,000.
 .isdigit() 함수 사용. 
 '''
 
+from curses.ascii import isdigit
 import sys
 #sys.stdin = open("input.txt", "rt")
 
@@ -40,3 +41,23 @@ for i in range(1, a + 1):
 print(a, count, sep = "\n")
 
 
+'''
+다른 풀이
+
+import sys
+sys.stdin = open("input.txt", "rt")
+s = input()
+res = 0
+for x in s:
+    #s가 리스트가 아니더라도 하나씩 접근 가능
+    if x.isdigit():
+        #참고: .isdecimal은 0~9 까지의 숫자만 확인해줌. 이 문제에서는 사용 가능!
+        res = res*10+int(x)
+        
+cnt = 0
+for i in range(1, res+1):
+    if res%i == 0:
+        cnt += 1
+print(cnt)
+    
+'''

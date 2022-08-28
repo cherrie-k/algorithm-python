@@ -40,3 +40,26 @@ for b in range(N - 1, N//2, -1):
         res += lst[b][s]
 
 print(res)
+
+
+'''
+훨 간단한 다른 풀이
+import sys
+sys.stdin = open("input.txt", "rt")
+n = int(input())
+a = [list(map(int, input().split())) for _ in range(n)] #이런 방법이...!!
+res = 0
+#다이아몬드 테두리의 왼쪽을 s, 오른쪽을 e로 둬서
+#그 테두리 안의 것들을 더해주자!
+s = e  = n//2
+for i in range(n):
+    for j in range(s, e+1):
+        res += a[i][j]
+    if i<n//2:  # 좌우 폭이 늘어나게 함       
+        s -= 1
+        e += 1
+    else:       # 좌우 폭이 줄어들게 함
+        s += 1
+        e -= 1
+print(res)
+'''
