@@ -31,3 +31,37 @@ l1.extend(l2)
 l1.sort()
 for i in l1:
     print(i, end=' ')
+    
+
+'''
+다른 풀이
+sort를 이용하면 시간복잡도가 NlogN이 된다!
+N짜리 시간복잡도로 구현해보자~~
+
+두 리스트에 포인터 각각 한개씩 가장 앞에 배치.
+
+import sys
+sys.stdin = open("input.txt", "rt")
+
+n = int(input())
+a = list(map(int, input().split()))
+m = int(input())
+b = list(map(int, input().split()))
+
+p1=p2=0
+c=[]
+while p1<n and p2<m:
+    if a[p1] <= b[p2]:
+        c.append(a[p1])
+        p1 += 1
+    else:
+        c.append(b[p2])
+        p2 += 1
+if p1<n:
+    c = c+a[p1:]
+if p2<m:
+    c = c+b[p2:]
+for x in c:
+    print(x, end=' ')
+        
+'''
