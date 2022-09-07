@@ -36,27 +36,36 @@ for i in range(N):
 print(cnt)
 
 '''
-'''
 import sys
 #sys.stdin = open("input.txt", "rt")
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
+# lt는 가장 왼쪽에서부터 가리킴
 lt = 0
+# rt는 lt의 바로 오른쪽임. 
 rt = 1
-tot = a[0]
+# tot는 lt부터 rt앞까지의 연속 부분의 합. 이게 m과 같으면 카운트++함.
+tot = a[0]  
 cnt = 0
 while True:
     if tot < m:
+        # 목표하는 수보다 작으면 tot를 키워야 함
         if rt < n:
+            # rt값을 더해주고,
             tot += a[rt]
+            # rt가 가리키는 인덱스를 하나 증가시켜줌
             rt += 1
         else:
             break
     elif tot == m:
+        # 목표하는 수와 같아질 때
         cnt += 1
         tot -= a[lt]
         lt += 1
     else:
+        # 목표하는 수보다 커짐 -> 꽝~~
         tot -= a[lt]
+        # lt 한칸 증가시킴. 
         lt += 1
 print(cnt)
+'''
