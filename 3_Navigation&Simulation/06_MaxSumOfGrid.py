@@ -52,8 +52,7 @@ print(max)
 
 
 '''
-'''
-
+다른 풀이
 import sys
 #sys.stdin = open("input.txt", "rt")
 n = int(input())
@@ -83,3 +82,4 @@ if sum2 > largest:
     largest = sum2
 
 print(largest)
+'''
