@@ -51,3 +51,41 @@ if sudoku(lst) is True:
     print("YES")
 else:
     print("NO")
+    
+
+'''
+다른 풀이
+import sys
+sys.stdin=open("input.txt", "r")
+def check(a):
+    # 행과 열을 검증하는 코드!
+    for i in range(9):
+        ch1=[0]*10  # 행을 체크
+        ch2=[0]*10  # 열을 체크
+        for j in range(9):
+            ch1[a[i][j]]=1  # 열번호가 증가. 행 고정시켜두고 탐색
+            ch2[a[j][i]]=1  # 행번호가 증가. 열 고정시켜두고 탐색.
+        if sum(ch1)!=9 or sum(ch2)!=9:
+            # 합으로 검증
+            return False
+    for i in range(3):
+        for j in range(3):
+        # 위 두개의 for문은 9개의 그룹을 보겠다는겨
+        
+            ch3=[0]*10
+            for k in range(3):
+                for s in range(3):
+                    ch3[a[i*3+k][j*3+s]]=1     
+                    # i*3+k가 행이고 j*3+s가 열임
+            if sum(ch3)!=9:
+                # 합으로 검증
+                return False
+    return True
+
+a=[list(map(int, input().split())) for _ in range(9)]
+if check(a):
+    print("YES")
+else:
+    print("NO")
+'''
+

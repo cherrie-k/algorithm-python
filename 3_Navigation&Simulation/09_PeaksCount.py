@@ -52,3 +52,30 @@ for i in range(1, N + 1):
            cnt += 1
 
 print(cnt)
+
+'''
+다른 풀이
+
+import sys
+#sys.stdin = open("input.txt", "rt")
+dx = [-1, 0, 1, 0]  # 상하좌우 탐색하게하는 리스트
+dy = [0, 1, 0, -1]  # 상하좌우 탐색하게하는 리스트
+n = int(input())
+a = [list(map(int, input().split())) for _ in range(n)] 
+a.insert(0, [0]*n)
+a.append([0]*n)
+for x in a:
+    x.insert(0, 0)
+    x.append(0)
+# 여기까지 똑같
+
+cnt = 0
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        # all 함수는 모든 조건이 참이 돼야 참이 됨
+        if all(a[i][j] > a[i+dx[k]][j+dy[k]] for k in range(4)): 
+            # i+dx[k]가 행, j+dy[k]가 열 검사해줌. 4번 상하좌우 돌면서 검사해줌. 
+            cnt += 1
+
+print(cnt)
+'''
