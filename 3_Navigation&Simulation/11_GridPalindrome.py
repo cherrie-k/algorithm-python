@@ -27,7 +27,7 @@ lst = [list(map(int, input().split())) for _ in range(7)]
 cnt = 0
 # 가로 검사(horizontal)
 for i in range(7):
-    for j in range(3):
+    for j in range(3):  #5개만 확인하기 위해서
         for k in range(2):
             if lst[i][j+k] != lst[i][j+4-k]:
                 break
@@ -35,7 +35,7 @@ for i in range(7):
             cnt += 1
 # 세로 검사(vertical)            
 for j in range(7):
-    for i in range(3):
+    for i in range(3):  #5개만 확인하기 위해서
         for k in range(2):
             if lst[i+k][j] != lst[i+4-k][j]:
                 break
@@ -44,3 +44,29 @@ for j in range(7):
 
 print(cnt)
 
+
+
+''' 
+다른 풀이
+import sys
+#sys.stdin = open("input.txt", "rt")
+board = [list(map(int, input().split())) for _ in range(7)] 
+cnt = 0
+
+for i in range(3):   #5개만 확인하기 위해서
+    for j in range(7): 
+        # slice 기능 사용
+        tmp = board[j][i:i+5]  # 0부터 4까지, 5개 분리해냄. 
+        # slice 해낸게 회문인지 확인
+        if tmp == tmp[::-1]: 
+            cnt += 1
+        
+        # 길이 5면 5/2 해서 2 바퀴만 검사하면 회문 판별 가능.
+        for k in range(2):
+            if board[i+k][j] != board[i+5-k-1][j]:
+                break   # 회문이 아니니 break
+        else: # break 안당하고 끝남. 즉 회문임. 
+            cnt += 1       
+
+print(cnt)
+'''
