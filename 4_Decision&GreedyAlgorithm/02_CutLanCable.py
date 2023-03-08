@@ -9,9 +9,9 @@
 N개보다 많이 만드는 것도 N개를 만드는 것에 포함된다. 
 이때 만들 수 있는 최대 랜선의 길이를 구하는 프로그램을 작성하시오.
 
-Elite institute have K number of LAN cables.
+A company has K number of LAN cables.
 However, the K number of LAN cables vary in length. 
-The teacher wanted to make all the LAN cables into N number of LAN cables
+A worker wanted to make all the LAN cables into N number of LAN cables
 which are all the same in length, so he had to cut the K number of LAN cables.
 For example, if you cut two 140cm LAN cables from a 300cm LAN cable, 
 you should throw away 20cm. (You cannot attach an already cut LAN cable.) 
@@ -27,27 +27,28 @@ import sys
 #sys.stdin = open("input.txt", "rt")
 
 K, N = map(int, input().split())
-lst = list(int(input()) for _ in range(K)) 
+lst = []
+largest = 1
+for _ in range(K):
+    tmp = int(input())
+    lst.append(tmp)
+    largest = max(largest, tmp)
 
-sum = 0
-for i in range(K):
-    sum += lst[i]
+res = 0   # res가 답
+low, high = 1, largest
 
-low, high = 1, sum//N
-
-def cutLan(lo, hi):
-    mid = (lo + hi) // 2 
-    cnt = 0
+while low <= high:
+    mid = (low + high) // 2
+    
+    cnt = 0   # cnt는 잘라서 나온 랜선의 개수
     for i in range(K):
         cnt += lst[i] // mid
     
-    if lo == mid:
-        print(mid)
-        return(mid)
-    if cnt < N:
-        cutLan(lo, mid - 1)
+    if cnt >= N:
+        res = mid
+        low = mid + 1
     else:
-        cutLan(mid + 1, hi)
+        high = mid - 1
 
-cutLan(low, high)
-
+print(res)
+    
