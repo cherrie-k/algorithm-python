@@ -36,16 +36,20 @@ sys.setrecursionlimit(10**6)
 
 N, M = map(int, input().split())
 lst = list(map(int, input().split()))
+maxx = max(lst)
 
 # dvd 개수 새줌.
 def countDvd(arr, num):
+    # num은 dvd의 용량.
     cnt = 1
     sum = 0
     for i in range(len(arr)):
         # i 번째 노래를 더했을 때 허용량보다 큼
-        if sum + arr[i] > num:
+        if sum + arr[i] > num: 
             cnt += 1  # dvd 하나 추가
-            sum = arr[i]
+            sum = arr[i] # 새로 추가한 dvd에 무조건 추가해버림. 
+            # 그 말은 dvd의 num(용량)은 반드시 넘어올 수 있는 노래 arr[i]의 크기보다 커야 함. 
+            # 따라서 line 64에서 mid >= maxx 라는 조건문을 추가. 
         else: 
             sum += arr[i]
     return cnt
@@ -56,7 +60,8 @@ lo, hi = 1, sum(lst)
 while lo <= hi:
     mid = (lo + hi) // 2
     
-    if countDvd(lst, mid) <= M: # 용량 충분함
+    # line 52에 의해 mid >= maxx 라는 조건 추가됨. 우리가 찾고자 하는 dvd의 용량은 모든 노래들 중 가장 긴 노래 이상이어야 함.
+    if mid >= maxx and countDvd(lst, mid) <= M: # 용량 충분함
         res = mid
         hi = mid - 1
     else: # 용량 너무 작음
